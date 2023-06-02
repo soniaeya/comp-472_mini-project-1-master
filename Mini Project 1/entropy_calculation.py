@@ -2,13 +2,20 @@ import math
 
 import numpy as np
 import pandas as pd
-import self as self
+import graphviz
+
+from sklearn import preprocessing
+from sklearn import tree
 
 
 def entropy_calculation():
     # This function returns a list of the entropy of each attr
-    data = pd.read_excel('..\Dataset\data.xlsx')
+    data = pd.read_excel('../Dataset/data.xlsx')
+
+#windows
+    # data = pd.read_excel('..\Dataset\data.xlsx')
     dataset = data.values.tolist()
+
     # dataset = [
     #     [True, False, False, True, 'Some', 3, False, True, 'French', 1, True],
     #     [True, False, False, True, 'Full', 1, False, False, 'Thai', 3, False],
@@ -538,12 +545,9 @@ def entropy_calculation():
 
     return entropy_list
 
-
-
-
-
     # header = ['Alt', 'Bar', 'Fri', 'Hun', 'Pat', 'Price', 'Rain', 'Res', 'Type', 'Est', 'WillWait']
+
 
 entropy_calculation()
 
-    # Output the entropy values of each attribute
+# Output the entropy values of each attribute

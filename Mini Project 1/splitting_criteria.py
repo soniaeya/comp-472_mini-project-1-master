@@ -32,7 +32,7 @@ def splitting_criteria():
     return df
 
 
-print(splitting_criteria())
+
     
 
 
