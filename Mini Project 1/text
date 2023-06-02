@@ -1,2 +1,4 @@
-        attribute_list = ["alt", "bar", "fri", "hun", "patrons",
-                          "price", "rain", "res", "type", "est"]
+        ig_est_list = [1 - entropy_est_true, 1 - entropy_est_false]
+        ig_list.append(ig_est_list)
+        my_dict_ig = {k: v for k, v in zip([True, False], ig_est_list)}
+        ig_value_list.append(my_dict_ig)

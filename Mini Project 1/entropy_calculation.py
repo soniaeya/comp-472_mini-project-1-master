@@ -29,7 +29,9 @@ class EntropyCalculation:
         # ]
 
         entropy_value_list = []
-
+        ig_value_list = []
+        entropy_list = []  # [[1.0, 1.0], [1.0, 1.0], [0.9709505944546686, 0.9852281360342515], [0.863120568566631, 0.7219280948873623], [0.9182958340544896, 0, 0], [0.9852281360342515, 0, 0.9182958340544896], [0.9709505944546686, 0.9852281360342515], [0.9709505944546686, 0.9852281360342515], [1.0, 1.0, 1.0, 1.0], [0.9182958340544896, 1.0, 1.0, -0.0]]
+        ig_list = []
         # Alt variables
         num_alt_true = 0
         num_alt_false = 0
@@ -230,8 +232,15 @@ class EntropyCalculation:
         except:
             entropy_alt = 0
         entropy_alt_list = [entropy_alt_true, entropy_alt_false]
+        entropy_list.append(entropy_alt_list)
+        # Making entropy dict
         my_dict = {k: v for k, v in zip([True, False], entropy_alt_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x:x[1])
+
+        ig_alt_list = [1 - entropy_alt_true, 1 - entropy_alt_false]
+        ig_list.append(ig_alt_list)
+        my_dict_ig = {k: v for k, v in zip([True, False], ig_alt_list)}
+        ig_value_list.append(my_dict_ig)
+
         entropy_value_list.append(my_dict)
 
         # 2 - bar
@@ -260,8 +269,13 @@ class EntropyCalculation:
         except:
             entropy_bar = 0
         entropy_bar_list = [entropy_bar_true, entropy_bar_false]
+        entropy_list.append(entropy_bar_list)
         my_dict = {k: v for k, v in zip([True, False], entropy_bar_list)}
         entropy_value_list.append(my_dict)
+        ig_bar_list = [1 - entropy_bar_true, 1 - entropy_bar_false]
+        ig_list.append(ig_bar_list)
+        my_dict_ig = {k: v for k, v in zip([True, False], ig_bar_list)}
+        ig_value_list.append(my_dict_ig)
 
         # 2 - fri
         try:
@@ -289,9 +303,15 @@ class EntropyCalculation:
         except:
             entropy_fri = 0
         entropy_fri_list = [entropy_fri_true, entropy_fri_false]
+        entropy_list.append(entropy_fri_list)
         my_dict = {k: v for k, v in zip([True, False], entropy_fri_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x: x[1])
+
         entropy_value_list.append(my_dict)
+
+        ig_fri_list = [1 - entropy_fri_true, 1 - entropy_fri_false]
+        ig_list.append(ig_fri_list)
+        my_dict_ig = {k: v for k, v in zip([True, False], ig_fri_list)}
+        ig_value_list.append(my_dict_ig)
         # 3 - hun
         try:
             num_hun = num_hun_true + num_hun_false
@@ -318,9 +338,14 @@ class EntropyCalculation:
         except:
             entropy_hun = 0
         entropy_hun_list = [entropy_hun_true, entropy_hun_false]
+        entropy_list.append(entropy_hun_list)
         my_dict = {k: v for k, v in zip([True, False], entropy_hun_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x: x[1])
+
         entropy_value_list.append(my_dict)
+        ig_hun_list = [1 - entropy_hun_true, 1 - entropy_hun_false]
+        ig_list.append(ig_hun_list)
+        my_dict_ig = {k: v for k, v in zip([True, False], ig_hun_list)}
+        ig_value_list.append(my_dict_ig)
 
         # 4 - Patrons
         # Calculate entropy H(Patrons=Full)
@@ -362,9 +387,14 @@ class EntropyCalculation:
             entropy_patrons = 1.0
 
         entropy_patron_list = [entropy_patron_full, entropy_patron_some, entropy_patron_none]
+        entropy_list.append(entropy_patron_list)
         my_dict = {k: v for k, v in zip(["Full", "Some", "None"], entropy_patron_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x: x[1])
         entropy_value_list.append(my_dict)
+
+        ig_patron_list = [1 - entropy_patron_full, 1 - entropy_patron_some,  1 - entropy_patron_some]
+        ig_list.append(ig_patron_list)
+        my_dict_ig = {k: v for k, v in zip(["Full", "Some", "None"], ig_patron_list)}
+        ig_value_list.append(my_dict_ig)
 
         # 5 - Price
 
@@ -402,9 +432,14 @@ class EntropyCalculation:
         except:
             print()
         entropy_price_list = [entropy_price_1, entropy_price_2, entropy_price_3]
+        entropy_list.append(entropy_price_list)
         my_dict = {k: v for k, v in zip(["$", "$", "$$$"], entropy_price_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x: x[1])
         entropy_value_list.append(my_dict)
+
+        ig_price_list = [1 - entropy_price_1, 1 - entropy_price_2, 1 - entropy_price_3]
+        ig_list.append(ig_price_list)
+        my_dict_ig = {k: v for k, v in zip(["$", "$", "$$$"], ig_price_list)}
+        ig_value_list.append(my_dict_ig)
 
         # 6 - rain
         try:
@@ -432,9 +467,14 @@ class EntropyCalculation:
         except:
             entropy_rain = 0
         entropy_rain_list = [entropy_rain_true, entropy_rain_false]
+        entropy_list.append(entropy_rain_list)
         my_dict = {k: v for k, v in zip([True, False], entropy_rain_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x: x[1])
+
         entropy_value_list.append(my_dict)
+        ig_rain_list = [1 - entropy_rain_true, 1 - entropy_rain_false]
+        ig_list.append(ig_rain_list)
+        my_dict_ig = {k: v for k, v in zip([True, False], ig_rain_list)}
+        ig_value_list.append(my_dict_ig)
 
         # 7 - res
         try:
@@ -462,9 +502,14 @@ class EntropyCalculation:
         except:
             entropy_res = 0
         entropy_res_list = [entropy_res_true, entropy_res_false]
+        entropy_list.append(entropy_res_list)
         my_dict = {k: v for k, v in zip([True, False], entropy_res_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x: x[1])
+
         entropy_value_list.append(my_dict)
+        ig_res_list = [1 - entropy_res_true, 1 - entropy_res_false]
+        ig_list.append(ig_res_list)
+        my_dict_ig = {k: v for k, v in zip([True, False], ig_res_list)}
+        ig_value_list.append(my_dict_ig)
 
         # 8 - Type
         num_type = num_type_italian + num_type_french + num_type_burger + num_type_thai
@@ -511,9 +556,13 @@ class EntropyCalculation:
         except:
             entropy_type = 0
         entropy_type_list = [entropy_type_italian, entropy_type_french, entropy_type_burger, entropy_type_thai]
+        entropy_list.append(entropy_type_list)
         my_dict = {k: v for k, v in zip(["Italian", "French", "Burger", "Thai"], entropy_type_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x: x[1])
         entropy_value_list.append(my_dict)
+        ig_type_list = [1 - entropy_type_italian, 1 - entropy_type_french,  1 - entropy_type_burger,  1 - entropy_type_thai]
+        ig_list.append(ig_type_list)
+        my_dict_ig = {k: v for k, v in zip(["Italian", "French", "Burger", "Thai"], ig_type_list)}
+        ig_value_list.append(my_dict_ig)
 
         # 9-Estimate i[9]
         # EXPLANATION: if numerator/denominator = 1, numerator = denominator -> no entropy
@@ -564,10 +613,24 @@ class EntropyCalculation:
 
         except:
             print()
+
         entropy_est_list = [entropy_est_1, entropy_est_2, entropy_est_3, entropy_est_4]
+        entropy_list.append(entropy_est_list)
         my_dict = {k: v for k, v in zip(["0-10", "10-30", "30-60", ">60"], entropy_est_list)}
-        my_dict = sorted(my_dict.items(), key=lambda x: x[1])
         entropy_value_list.append(my_dict)
+        ig_est_list = [1 - entropy_est_1, 1 - entropy_est_2,  1 - entropy_est_3,  1 - entropy_est_4]
+        ig_list.append(ig_est_list)
+        my_dict_ig = {k: v for k, v in zip(["0-10", "10-30", "30-60", ">60"], ig_est_list)}
+        ig_value_list.append(my_dict_ig)
+
+        ####################
+
+        # info_gain_list [[0.0, 0.0], [0.0, 0.0], [0.02904940554533142, 0.014771863965748477], [0.136879431433369,
+        # 0.2780719051126377], [0.08170416594551044, 1, 1], [0.014771863965748477, 1, 0.08170416594551044],
+        # [0.02904940554533142, 0.014771863965748477], [0.02904940554533142, 0.014771863965748477], [0.0, 0.0, 0.0,
+        # 0.0], [0.08170416594551044, 0.0, 0.0, 1.0]]
+        info_gain_list = entropy_list
+
         # Output the entropy values of each attribute:
 
         # print("Alt Entropy(0): " + str(entropy_alt))
@@ -586,32 +649,56 @@ class EntropyCalculation:
         total_entropy_list = [entropy_alt, entropy_bar, entropy_fri, entropy_hun, entropy_patrons, entropy_price,
                               entropy_rain, entropy_res, entropy_type, entropy_est]
 
+        # entropy_dict {'alt': 1.0, 'bar': 1.0, 'fri': 0.979279160376092, 'hun': 0.8042903712002691, 'patrons': 0.4591479170272448, 'price': 0.8042903712002691, 'rain': 0.979279160376092, 'res': 0.979279160376092, 'type': 1.0, 'est': 0.792481250360578}
         entropy_dict = {k: v for k, v in zip(attribute_list, total_entropy_list)}
-
-        # print(entropy_dict)
 
         # (Dict) Entropy of each attribute (Patron)
         # print(entropy_dict)
 
         # (List of Dict) Entropy of each values (Full, Some, None)
-        # print(entropy_value_list)
         total_entropy_dict = {k: v for k, v in zip(attribute_list, total_entropy_list)}
         entropy_value_dict = {k: v for k, v in zip(attribute_list, entropy_value_list)}
-        sorted_total_entropy_dict = sorted(total_entropy_dict.items(), key=lambda x:x[1])
-        print("DATA VISUALS")
-        print(sorted_total_entropy_dict)
-        print(entropy_value_dict)
-        for i in sorted_total_entropy_dict:
-            print(i[0]+": ")
-            print(entropy_value_dict.get(i[0]))
-            print("+++\n")
+        ig_value_dict = {k: v for k, v in zip(attribute_list, ig_value_list)}
 
-        # print(entropy_value_dict.get('patrons'))
+        sorted_total_entropy_dict = sorted(total_entropy_dict.items(), key=lambda x: x[1])
+        # print("DATA VISUALS")
+        # print(sorted_total_entropy_dict)
+        # print(entropy_value_dict)
+        # for i in sorted_total_entropy_dict:
+        #     print(i[0]+": ")
+        #     print(entropy_value_dict.get(i[0]))
+        #     print("+++\n")
+        #
+        # # print(entropy_value_dict.get('patrons'))
+        #
+        # # (Dict of Dict) {Patron: {Full, Some, None}}
+        # print(dataset)
 
-        # (Dict of Dict) {Patron: {Full, Some, None}}
-        print(dataset)
+        # print(
+        #     entropy_value_dict)  # {'alt': [0.0, 0.0], 'bar': [0.0, 0.0], 'fri': [0.02904940554533142, 0.014771863965748477], 'hun': [0.2780719051126377, 0.136879431433369], 'patrons': [1, 1, 0.08170416594551044], 'price': [1, 0.08170416594551044], 'rain': [0.02904940554533142, 0.014771863965748477], 'res': [0.02904940554533142, 0.014771863965748477], 'type': [0.0, 0.0, 0.0, 0.0], 'est': [1.0, 0.08170416594551044, 0.0, 0.0]}
 
-        return [sorted_total_entropy_dict, entropy_value_dict]
+        ig_attr_list = []
+        # {'alt': 0.0, 'bar': 0.0, 'fri': 0.020720839623908027, 'hun': 0.19570962879973086,
+        # 'patrons': 0.5408520829727552, 'price': 0.19570962879973086, 'rain': 0.020720839623908027,
+        # 'res': 0.020720839623908027, 'type': 0.0, 'est': 0.20751874963942196}
+
+        count = 0
+        for i in total_entropy_dict.values():
+            ig_attr_list.append(1 - i)
+            count += 1
+        ig_attr_dict = {k: v for k, v in zip(attribute_list, ig_attr_list)}
+        # print(entropy_value_dict)
+        # {'alt': {True: 1.0, False: 1.0}, 'bar': {True: 1.0, False: 1.0},
+        # 'fri': {True: 0.9709505944546686, False: 0.9852281360342515},
+        # 'hun': {True: 0.863120568566631, False: 0.7219280948873623},
+        # 'patrons': {'Full': 0.9182958340544896, 'Some': 0, 'None': 0},
+        # 'price': {'$': 0, '$$$': 0.9182958340544896}, 'rain': {True: 0.9709505944546686, False: 0.9852281360342515},
+        # 'res': {True: 0.9709505944546686, False: 0.9852281360342515}, 'type': {'Italian': 1.0, 'French': 1.0, 'Burger': 1.0, 'Thai': 1.0},
+        # 'est': {'0-10': 0.9182958340544896, '10-30': 1.0, '30-60': 1.0, '>60': -0.0}}
+        print(ig_attr_dict)
+        print(ig_value_dict)
+
+        return [sorted_total_entropy_dict, entropy_value_dict, ig_attr_dict]
 
         # header = ['Alt', 'Bar', 'Fri', 'Hun', 'Pat', 'Price', 'Rain', 'Res', 'Type', 'Est', 'WillWait']
 
