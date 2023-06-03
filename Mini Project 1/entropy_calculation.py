@@ -2,13 +2,14 @@ import math
 
 import numpy as np
 import pandas as pd
-import graphviz
 
-from sklearn import preprocessing
-from sklearn import tree
 
 
 class EntropyCalculation:
+    entropy_attr_dict = {}
+    entropy_value_dict = {}
+    ig_attr_dict = {}
+    ig_value_dict = {}
     def entropy_calculation(self, dataset):
 
         entropy_value_list = []
@@ -627,19 +628,24 @@ class EntropyCalculation:
         total_entropy_list = [entropy_alt, entropy_bar, entropy_fri, entropy_hun, entropy_patrons, entropy_price,
                               entropy_rain, entropy_res, entropy_type, entropy_est]
 
-        entropy_attr_list = {k: v for k, v in zip(attribute_list, total_entropy_list)}
+        entropy_attr_dict = {k: v for k, v in zip(attribute_list, total_entropy_list)}
         entropy_value_dict = {k: v for k, v in zip(attribute_list, entropy_value_list)}
         ig_value_dict = {k: v for k, v in zip(attribute_list, ig_value_list)}
 
         ig_attr_list = []
 
         count = 0
-        for i in entropy_attr_list.values():
+        for i in entropy_attr_dict.values():
             ig_attr_list.append(1 - i)
             count += 1
         ig_attr_dict = {k: v for k, v in zip(attribute_list, ig_attr_list)}
 
-        return [entropy_attr_list, entropy_value_dict, ig_attr_dict, ig_value_dict]
+        EntropyCalculation.entropy_attr_dict = entropy_attr_dict
+        EntropyCalculation.entropy_value_dict = entropy_value_dict
+        EntropyCalculation.ig_attr_dict = ig_attr_dict
+        EntropyCalculation.ig_value_dict = ig_value_dict
+
+        return [entropy_attr_dict, entropy_value_dict, ig_attr_dict, ig_value_dict]
 
 
 obj = EntropyCalculation()

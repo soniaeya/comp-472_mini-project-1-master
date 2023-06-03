@@ -1,11 +1,13 @@
 pandas~=2.0.2
-scikit-learn
+scikit-learn~=1.2.2
 openpyxl
 numpy~=1.24.3
 self~=2020.12.3
-matplotlib
+matplotlib~=3.7.1
 
 
 
 
 
+
+networkx~=3.1
