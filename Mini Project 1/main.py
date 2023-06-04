@@ -11,6 +11,9 @@ data = pd.read_excel('../Dataset/data.xlsx')
 # windows
 # data = pd.read_excel('..\Dataset\data.xlsx')
 dataset = data.values.tolist()
+outcome = [sublist[-1] for sublist in dataset]
+
+
 entropy_instance = EntropyCalculation()
 entropy_list = entropy_instance.entropy_calculation(dataset)[0]
 entropy_value_dict = entropy_instance.entropy_calculation(dataset)[3]
@@ -20,14 +23,29 @@ splitting_criteria_output = splitting_criteria_instance.splitting_criteria(entro
 choice = 1
 
 while choice != str(3):
-    print(dataset)
     choice = input(
         "Please choose an option [1, 2, 3]: \n1. Specify Parameter\n2. Visualize the decision tree\n3. Exit\n")
     # 1. specify parameters
     if choice == str(1):
-        # data_values = [True, False, False, True, "Some", 3, False, True, "French", 1]
-        param = input("Write you parameters in a dictionary format (eg: [True, False, False, True, 'Some', 3, False, "
-                      "True, 'French', 1]): ")
+        # data_values = [True, False, False, True, Some, 3, False, True, French, 1]
+
+        param = input("Write you parameters in a dictionary format (eg: True, False, False, True, 'Some', 3, False, True, 'French', 1): ")
+        # if type(param) != 'list':
+        #     print("Please input a list!")
+        #     continue
+        obj = Classification()
+        user_input = param.split(', ')
+        idx = 0
+        for i in user_input:
+            if i == 'True':
+                user_input[idx] = True
+            if i == 'False':
+                user_input[idx] = False
+            idx += 1
+        print(dataset)
+        print(outcome)
+        print(user_input)
+        # print(obj.classification(dataset, outcome, user_input))
 
         continue
     # 2. visualize the constructed decision tree
