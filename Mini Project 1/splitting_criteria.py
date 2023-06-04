@@ -13,11 +13,10 @@ class SplittingCriteria(entropy_calculation.EntropyCalculation):
         #Returns node order
         sorted_nodes = sorted(entropy_attr_dict, key=lambda x: entropy_attr_dict[x])
 
-
         return [sorted_nodes, ig_value_dict]
 
 
-# my_obj = SplittingCriteria()
-# my_obj.splitting_criteria(entropy_calculation.EntropyCalculation.entropy_attr_dict, entropy_calculation.EntropyCalculation.ig_value_dict)
-#
+my_obj = SplittingCriteria()
+my_obj.splitting_criteria(entropy_calculation.EntropyCalculation.entropy_attr_dict, entropy_calculation.EntropyCalculation.ig_value_dict)
+
 

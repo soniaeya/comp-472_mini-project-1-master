@@ -1,3 +1,8 @@
+dataset:
+[[True, False, False, True, 'Some', 3, False, True, 'French', 1, True], [True, False, False, True, 'Full', 1, False, False, 'Thai', 3, False], [False, True, False, False, 'Some', 1, False, False, 'Burger', 1, True], [True, False, True, True, 'Full', 1, True, False, 'Thai', 2, True], [True, False, True, False, 'Full', 3, False, True, 'French', 4, False], [False, True, False, True, 'Some', 2, True, True, 'Italian', 1, True], [False, True, False, False, nan, 1, True, False, 'Burger', 1, False], [False, False, False, True, 'Some', 2, True, True, 'Thai', 1, True], [False, True, True, False, 'Full', 1, True, False, 'Burger', 4, False], [True, True, True, True, 'Full', 3, False, True, 'Italian', 2, False], [False, False, False, False, nan, 1, False, False, 'Thai', 1, False], [True, True, True, True, 'Full', 1, False, False, 'Burger', 3, True]]
+---
+
+
 1, entropy_attr_list
 2. entropy_value_dict
 3. ig_attr_dict
@@ -38,4 +43,54 @@ ig_value_dict.get(i)
 
 sorted_nodes
 ['patrons', 'est', 'hun', 'price', 'fri', 'rain', 'res', 'alt', 'bar', 'type']
+------------------------------------------
+patrons
+├── end (patrons: None)
+├── end (patrons: Some)
+└── est
+    ├── end (est: 10-30)
+    ├── end (est: 30-60)
+    ├── end (est: >60)
+    └── hun
+        ├── end (hun: False)
+        └── price
+            ├── end (price: $$$)
+            ├── end (price: $$)
+            └── fri
+                ├── end (fri: False)
+                └── rain
+                    ├── end (rain: False)
+                    └── res
+                        ├── alt
+                        │   ├── bar
+                        │   │   ├── end (bar: False)
+                        │   │   └── type
+                        │   │       ├── end (type: Burger)
+                        │   │       ├── end (type: French)
+                        │   │       ├── end (type: Italian)
+                        │   │       └── end (type: Thai)
+                        │   └── end (alt: False)
+                        └── end (res: False)
 
+Please choose an option [1, 2, 3]:
+1. Specify Parameter
+2. Visualize the decision tree
+3. Exist
+
+----
+classification
+
+        X = [[True, False, False, True, 'Some', 3, False, True, 'French', 1],
+ [True, False, False, True, 'Full', 1, False, False, 'Thai', 3],
+ [False, True, False, False, 'Some', 1, False, False, 'Burger', 1],
+ [True, False, True, True, 'Full', 1, True, False, 'Thai', 2],
+ [True, False, True, False, 'Full', 3, False, True, 'French', 4],
+ [False, True, False, True, 'Some', 2, True, True, 'Italian', 1],
+ [False, True, False, False, 'None', 1, True, False, 'Burger', 1],
+ [False, False, False, True, 'Some', 2, True, True, 'Thai', 1],
+ [False, True, True, False, 'Full', 1, True, False, 'Burger', 4],
+ [True, True, True, True, 'Full', 3, False, True, 'Italian', 2],
+ [False, False, False, False, 'None', 1, False, False, 'Thai', 1],
+ [True, True, True, True, 'Full', 1, False, False, 'Burger', 3]]
+
+        Y = [True, False, True, True, False, True, False, True, False, False, False, True]

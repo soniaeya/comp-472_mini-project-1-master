@@ -20,8 +20,9 @@ splitting_criteria_output = splitting_criteria_instance.splitting_criteria(entro
 choice = 1
 
 while choice != str(3):
+    print(dataset)
     choice = input(
-        "Please choose an option [1, 2, 3]: \n1. Specify Parameter\n2. Visualize the decision tree\n3. Exist\n")
+        "Please choose an option [1, 2, 3]: \n1. Specify Parameter\n2. Visualize the decision tree\n3. Exit\n")
     # 1. specify parameters
     if choice == str(1):
         # data_values = [True, False, False, True, "Some", 3, False, True, "French", 1]
