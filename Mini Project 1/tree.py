@@ -15,6 +15,9 @@ ig_value_dict = {'alt': {True: 0.0, False: 0.0}, 'bar': {True: 0.0, False: 0.0},
 G = nx.DiGraph()
 G.add_nodes_from(sorted_nodes)
 
+idx = 0
+
+
 pos = nx.nx_agraph.graphviz_layout(G, prog='dot')
 
 # Increase spacing for y-coordinate
