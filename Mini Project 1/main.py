@@ -1,3 +1,5 @@
+import math
+
 import pandas as pd
 from splitting_criteria import SplittingCriteria
 from entropy_calculation import EntropyCalculation
@@ -39,13 +41,30 @@ while choice != str(3):
         for i in user_input:
             if i == 'True':
                 user_input[idx] = True
-            if i == 'False':
+            elif i == 'False':
                 user_input[idx] = False
+            else:
+                try:
+                    user_input[idx] = int(i)
+                except:
+                    print()
             idx += 1
-        print(dataset)
-        print(outcome)
-        print(user_input)
-        # print(obj.classification(dataset, outcome, user_input))
+
+        # REPLCAE nan with None
+        for i in dataset:
+            idx = 0
+            i.pop()
+            for j in i:
+                try:
+                    if math.isnan(j):
+                        i[idx] = 'None'
+                except:
+                    continue
+                idx += 1
+        # print(dataset)
+        # print(outcome)
+        # print(user_input)
+        print(obj.classification(dataset, outcome, user_input))
 
         continue
     # 2. visualize the constructed decision tree

@@ -40,30 +40,25 @@ class Classification:
         new_data_categorical = onehot_encoder.transform(new_string_features_encoded)
 
         new_data_encoded = np.concatenate((np.delete(new_data, categorical_indices, axis=1), new_data_categorical), axis=1)
-        print("X_encoded shape:", X_encoded.shape)
-        print("new_data_encoded shape:", new_data_encoded.shape)
 
         predicted_outcome = model.predict(new_data_encoded.astype(float))
 
         return predicted_outcome
 
-X = [
-    [True, False, False, True, 'Some', 3, False, True, 'French', 1],
-    [True, False, False, True, 'Full', 1, False, False, 'Thai', 3],
-    [False, True, False, False, 'Some', 1, False, False, 'Burger', 1],
-    [True, False, True, True, 'Full', 1, True, False, 'Thai', 2],
-    [True, False, True, False, 'Full', 3, False, True, 'French', 4],
-    [False, True, False, True, 'Some', 2, True, True, 'Italian', 1],
-    [False, True, False, False, 'None', 1, True, False, 'Burger', 1],
-    [False, False, False, True, 'Some', 2, True, True, 'Thai', 1],
-    [False, True, True, False, 'Full', 1, True, False, 'Burger', 4],
-    [True, True, True, True, 'Full', 3, False, True, 'Italian', 2],
-    [False, False, False, False, 'None', 1, False, False, 'Thai', 1],
-    [True, True, True, True, 'Full', 1, False, False, 'Burger', 3]
-]
-
-
-Y = [True, False, True, True, False, True, False, True, False, False, False, True]
-obj = Classification()
-print(obj.classification(X, Y, [True, False, False, True, 'Full', 1, False, False, 'Thai', 3]))
-# True, False, False, True, Full, 1, False, False, Thai, 3
+# X = [[True, False, False, True, 'Some', 3, False, True, 'French', 1],
+#     [True, False, False, True, 'Full', 1, False, False, 'Thai', 3],
+#     [False, True, False, False, 'Some', 1, False, False, 'Burger', 1],
+#     [True, False, True, True, 'Full', 1, True, False, 'Thai', 2],
+#     [True, False, True, False, 'Full', 3, False, True, 'French', 4],
+#     [False, True, False, True, 'Some', 2, True, True, 'Italian', 1],
+#     [False, True, False, False, 'None', 1, True, False, 'Burger', 1],
+#     [False, False, False, True, 'Some', 2, True, True, 'Thai', 1],
+#     [False, True, True, False, 'Full', 1, True, False, 'Burger', 4],
+#     [True, True, True, True, 'Full', 3, False, True, 'Italian', 2],
+#     [False, False, False, False, 'None', 1, False, False, 'Thai', 1],
+#     [True, True, True, True, 'Full', 1, False, False, 'Burger', 3]]
+#
+# Y = [True, False, True, True, False, True, False, True, False, False, False, True]
+# obj = Classification()
+# print(obj.classification(X, Y, [True, False, False, True, 'Full', 1, False, False, 'Thai', 3]))
+# # True, False, False, True, Full, 1, False, False, Thai, 3
