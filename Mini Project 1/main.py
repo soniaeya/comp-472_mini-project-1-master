@@ -61,10 +61,9 @@ while choice != str(3):
                 except:
                     continue
                 idx += 1
-        # print(dataset)
-        # print(outcome)
-        # print(user_input)
-        print(obj.classification(dataset, outcome, user_input))
+        print("Your expected outcome is: "+str(obj.classification(dataset, outcome, user_input)[0]))
+        print("___________________________________________________________")
+        # True, False, False, True, Full, 1, False, False, Thai, 3
 
         continue
     # 2. visualize the constructed decision tree
