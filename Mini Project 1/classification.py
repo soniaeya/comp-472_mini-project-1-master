@@ -1,2 +1,4 @@
-def classification():
-    print()
+
+class Classification:
+    def classification(self):
+        print()
