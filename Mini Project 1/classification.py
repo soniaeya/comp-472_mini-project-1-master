@@ -34,10 +34,8 @@ class Classification:
 
         # Combine encoded categorical features with remaining numerical features
         X_encoded = np.concatenate((np.delete(X, categorical_indices, axis=1), X_categorical), axis=1)
-        print(X)
-        print(Y)
 
-        X_train, X_test, Y_train, Y_test = train_test_split(X_encoded, Y, test_size=0.5, random_state=2)
+        X_train, X_test, Y_train, Y_test = train_test_split(X_encoded, Y, test_size=0.2, random_state=42)
 
         model = LogisticRegression()
         model.fit(X_train, Y_train)

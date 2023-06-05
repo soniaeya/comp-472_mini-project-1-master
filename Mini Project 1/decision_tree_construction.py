@@ -31,6 +31,7 @@ class DecisionTreeConstruction(classification.Classification):
         input = []
         path_taken = []
         key_path = []
+        sum = 0
         for i in sorted_nodes:
             path_taken.append(i)
             if i == 'alt':
@@ -58,7 +59,7 @@ class DecisionTreeConstruction(classification.Classification):
                 # Create Root Node
                 tree.create_node(tag=i, identifier=i)
             sub_attr_dict = ig_value_dict.get(i)
-            sum = 0
+
             for key, value in sub_attr_dict.items():
 
                 prediction = ""
@@ -71,7 +72,7 @@ class DecisionTreeConstruction(classification.Classification):
                             if math.isnan(k[data_idx]) and key == "None":
                                 prediction = k[10]
                         except:
-                            print()
+                            continue
                         if k[data_idx] == key:
                             prediction = k[10]
                     # return output
@@ -81,9 +82,11 @@ class DecisionTreeConstruction(classification.Classification):
                     tree.create_node(tag=str(str(prediction)+" (" + i + ": " + str(key) + ")"), identifier=str(str(prediction)+" (" + i + ": " + str(key) + ")"), parent=i)
 
                 else:
+
+                    new_node = {i: key}
+                    key_path.append((new_node))
                     sum = sum + value
                     try:
-                        key_path.append(key)
                         # prep X
                         idx_list = [] # Column 2 and 3 of data set
                         for i in path_taken:
@@ -102,15 +105,16 @@ class DecisionTreeConstruction(classification.Classification):
 
                         #TODO change X based on path taken
 
-
-
                         tree.create_node(tag=sorted_nodes[idx + 1], identifier=sorted_nodes[idx + 1], parent=i)
                     # Reach a leaf node (no more attributes)
                     except:
-                        # obj = classification.Classification()
-                        # print(obj.classification(obj, X=X, Y=outcome, user_input=key_path))
-                        tree.create_node(tag=str(str(prediction)+" (" + i + ": " + str(key) + ")"),
-                                         identifier=str(str(prediction)+" (" + i + ": " + str(key) + ")"), parent=i)
+                        # key_path.append((new_node))
+                        continue
+                        # # obj = classification.Classification()
+                        # # print(obj.classification(obj, X=X, Y=outcome, user_input=key_path))
+                        #
+                        # tree.create_node(tag=str(str(prediction)+" (" + i + ": " + str(key) + ")"),
+                        #                  identifier=str(str(prediction)+" (" + i + ": " + str(key) + ") "+str(key_path)), parent=i)
 
             idx += 1
 
