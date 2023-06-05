@@ -4,24 +4,13 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
 import numpy as np
 
 class Classification:
-
     def classification(self, X, Y, user_input):
 
         # Convert boolean values to integers
         X = [[int(val) if isinstance(val, bool) else val for val in row] for row in X]
 
         # Separate string features for ordinal encoding
-        i = 0
-        j = 0
-        string_features = []
-        while i < 12:
-            while j < 12:
-                try:
-                    string_features = [[row[i], row[j]] for row in X]
-                except:
-                    print()
-                j += 1
-            i += 1
+        string_features = [[row[4], row[8]] for row in X]
 
         # Ordinal encode string features
         ordinal_encoder = OrdinalEncoder()

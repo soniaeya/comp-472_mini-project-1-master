@@ -69,5 +69,5 @@ while choice != str(3):
     # 2. visualize the constructed decision tree
     elif choice == str(2):
         decision_tree_instance = DecisionTreeConstruction()
-        decision_tree_instance.decision_tree_construction(splitting_criteria_output[0], splitting_criteria_output[1])
+        decision_tree_instance.decision_tree_construction(splitting_criteria_output[0], splitting_criteria_output[1], dataset)
         continue

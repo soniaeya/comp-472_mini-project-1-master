@@ -24,6 +24,7 @@ class DecisionTreeConstruction(classification.Classification):
             'willwait': 10
         }
         tree = Tree()
+        prediction = True
         idx = 0
         X = []
         outcome = [[sublist[10] for sublist in dataset]]
@@ -62,7 +63,6 @@ class DecisionTreeConstruction(classification.Classification):
 
             for key, value in sub_attr_dict.items():
 
-                prediction = ""
                 input.append(value)
                 # Reach a leaf node (information gain >= 1)
                 if value == 1 or sum >= 1:
