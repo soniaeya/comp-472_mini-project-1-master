@@ -417,12 +417,12 @@ class EntropyCalculation:
             print()
         entropy_price_list = [entropy_price_1, entropy_price_2, entropy_price_3]
         entropy_list.append(entropy_price_list)
-        my_dict = {k: v for k, v in zip(["$", "$$", "$$$"], entropy_price_list)}
+        my_dict = {k: v for k, v in zip([1, 2, 3], entropy_price_list)}
         entropy_value_list.append(my_dict)
 
         ig_price_list = [1 - entropy_price_1, 1 - entropy_price_2, 1 - entropy_price_3]
         ig_list.append(ig_price_list)
-        my_dict_ig = {k: v for k, v in zip(["$", "$$", "$$$"], ig_price_list)}
+        my_dict_ig = {k: v for k, v in zip([1, 2, 3], ig_price_list)}
         ig_value_list.append(my_dict_ig)
 
         # 6 - rain
@@ -601,11 +601,11 @@ class EntropyCalculation:
 
         entropy_est_list = [entropy_est_1, entropy_est_2, entropy_est_3, entropy_est_4]
         entropy_list.append(entropy_est_list)
-        my_dict = {k: v for k, v in zip(["0-10", "10-30", "30-60", ">60"], entropy_est_list)}
+        my_dict = {k: v for k, v in zip([1, 2, 3, 4], entropy_est_list)}
         entropy_value_list.append(my_dict)
         ig_est_list = [1 - entropy_est_1, 1 - entropy_est_2, 1 - entropy_est_3, 1 - entropy_est_4]
         ig_list.append(ig_est_list)
-        my_dict_ig = {k: v for k, v in zip(["0-10", "10-30", "30-60", ">60"], ig_est_list)}
+        my_dict_ig = {k: v for k, v in zip([1, 2, 3, 4], ig_est_list)}
         ig_value_list.append(my_dict_ig)
 
         ####################

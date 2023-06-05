@@ -4,13 +4,24 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder
 import numpy as np
 
 class Classification:
+
     def classification(self, X, Y, user_input):
 
         # Convert boolean values to integers
         X = [[int(val) if isinstance(val, bool) else val for val in row] for row in X]
 
         # Separate string features for ordinal encoding
-        string_features = [[row[4], row[8]] for row in X]
+        i = 0
+        j = 0
+        string_features = []
+        while i < 12:
+            while j < 12:
+                try:
+                    string_features = [[row[i], row[j]] for row in X]
+                except:
+                    print()
+                j += 1
+            i += 1
 
         # Ordinal encode string features
         ordinal_encoder = OrdinalEncoder()
@@ -23,8 +34,10 @@ class Classification:
 
         # Combine encoded categorical features with remaining numerical features
         X_encoded = np.concatenate((np.delete(X, categorical_indices, axis=1), X_categorical), axis=1)
+        print(X)
+        print(Y)
 
-        X_train, X_test, Y_train, Y_test = train_test_split(X_encoded, Y, test_size=0.2, random_state=42)
+        X_train, X_test, Y_train, Y_test = train_test_split(X_encoded, Y, test_size=0.5, random_state=2)
 
         model = LogisticRegression()
         model.fit(X_train, Y_train)

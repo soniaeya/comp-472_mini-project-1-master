@@ -1,5 +1,16 @@
 dataset:
-[[True, False, False, True, 'Some', 3, False, True, 'French', 1, True], [True, False, False, True, 'Full', 1, False, False, 'Thai', 3, False], [False, True, False, False, 'Some', 1, False, False, 'Burger', 1, True], [True, False, True, True, 'Full', 1, True, False, 'Thai', 2, True], [True, False, True, False, 'Full', 3, False, True, 'French', 4, False], [False, True, False, True, 'Some', 2, True, True, 'Italian', 1, True], [False, True, False, False, nan, 1, True, False, 'Burger', 1, False], [False, False, False, True, 'Some', 2, True, True, 'Thai', 1, True], [False, True, True, False, 'Full', 1, True, False, 'Burger', 4, False], [True, True, True, True, 'Full', 3, False, True, 'Italian', 2, False], [False, False, False, False, nan, 1, False, False, 'Thai', 1, False], [True, True, True, True, 'Full', 1, False, False, 'Burger', 3, True]]
+[[True, False, False, True, 'Some', 3, False, True, 'French', 1, True],
+[True, False, False, True, 'Full', 1, False, False, 'Thai', 3, False],
+[False, True, False, False, 'Some', 1, False, False, 'Burger', 1, True],
+[True, False, True, True, 'Full', 1, True, False, 'Thai', 2, True],
+[True, False, True, False, 'Full', 3, False, True, 'French', 4, False],
+[False, True, False, True, 'Some', 2, True, True, 'Italian', 1, True],
+[False, True, False, False, nan, 1, True, False, 'Burger', 1, False],
+[False, False, False, True, 'Some', 2, True, True, 'Thai', 1, True],
+[False, True, True, False, 'Full', 1, True, False, 'Burger', 4, False],
+[True, True, True, True, 'Full', 3, False, True, 'Italian', 2, False],
+[False, False, False, False, nan, 1, False, False, 'Thai', 1, False],
+[True, True, True, True, 'Full', 1, False, False, 'Burger', 3, True]]
 ---
 
 
@@ -94,3 +105,16 @@ classification
  [True, True, True, True, 'Full', 1, False, False, 'Burger', 3]]
 
         Y = [True, False, True, True, False, True, False, True, False, False, False, True]
+
+        --------------------------------------------------------------------------------------
+
+        ig_value_dict
+        {'alt': {True: 0.0, False: 0.0}, 'bar': {True: 0.0, False: 0.0}, 'fri': {True: 0.02904940554533142, False: 0.014771863965748366},
+        'hun': {True: 0.136879431433369, False: 0.2780719051126377}, 'patrons': {'Full': 0.08170416594551044, 'Some': 1, 'None': 1},
+        'price': {'$': 0.014771863965748366, '$$': 1, '$$$': 0.08170416594551044}, 'rain': {True: 0.02904940554533142, False: 0.014771863965748366},
+        'res': {True: 0.02904940554533142, False: 0.014771863965748366}, 'type': {'Italian': 0.0, 'French': 0.0, 'Burger': 0.0, 'Thai': 0.0},
+        'est': {'0-10': 0.08170416594551044, '10-30': 0.0, '30-60': 0.0, '>60': 1.0}}
+
+
+sorted_nodes
+['patrons', 'est', 'hun', 'price', 'fri', 'rain', 'res', 'alt', 'bar', 'type']
