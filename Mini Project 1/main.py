@@ -31,7 +31,7 @@ while choice != str(3):
     if choice == str(1):
         # data_values = [True, False, False, True, Some, 3, False, True, French, 1]
 
-        param = input("Write you parameters in a dictionary format (eg: True, False, False, True, 'Some', 3, False, True, 'French', 1): ")
+        param = input("Write you parameters in a dictionary format (eg: True, False, False, True, Full, 1, False, False, Thai, 3): ")
         # if type(param) != 'list':
         #     print("Please input a list!")
         #     continue

@@ -4,12 +4,12 @@ import numpy as np
 import pandas as pd
 
 
-
 class EntropyCalculation:
     entropy_attr_dict = {}
     entropy_value_dict = {}
     ig_attr_dict = {}
     ig_value_dict = {}
+
     def entropy_calculation(self, dataset):
 
         entropy_value_list = []
@@ -612,16 +612,16 @@ class EntropyCalculation:
 
         # Output the entropy values of each attribute:
 
-        # print("Alt Entropy(0): " + str(entropy_alt))
-        # print("bar Entropy(1): " + str(entropy_bar))
-        # print("fri Entropy(2): " + str(entropy_fri))
-        # print("hun Entropy(3): " + str(entropy_hun))
-        # print("Patron Entropy(4): " + str(entropy_patrons))
-        # print("Price Entropy(5): " + str(entropy_price))
-        # print("rain Entropy(6): " + str(entropy_rain))
-        # print("res Entropy(7): " + str(entropy_res))
-        # print("Type Entropy(8): " + str(entropy_type))
-        # print("Est Entropy(9): " + str(entropy_est))
+        print("Alt Entropy(0): " + str(entropy_alt))
+        print("bar Entropy(1): " + str(entropy_bar))
+        print("fri Entropy(2): " + str(entropy_fri))
+        print("hun Entropy(3): " + str(entropy_hun))
+        print("Patron Entropy(4): " + str(entropy_patrons))
+        print("Price Entropy(5): " + str(entropy_price))
+        print("rain Entropy(6): " + str(entropy_rain))
+        print("res Entropy(7): " + str(entropy_res))
+        print("Type Entropy(8): " + str(entropy_type))
+        print("Est Entropy(9): " + str(entropy_est))
 
         attribute_list = ["alt", "bar", "fri", "hun", "patrons", "price", "rain", "res", "type", "est"]
 
