@@ -15,21 +15,34 @@ import pydotplus
 
 col_names = ['alt', 'bar', 'fri', 'hun', 'pat', 'price', 'rain', 'res', 'type','est', 'willwait']
 # load dataset
-dataset = pd.read_csv("training_data.csv", header=None, names=col_names)
-df_test = pd.DataFrame(dataset, columns=col_names)
-df = df_test.drop(0, axis=0)
+dataset = pd.read_csv("training_data.csv")
+dataset = pd.DataFrame(dataset)
+feature_cols = []
 
-df.index = ['1','2','3','4','5','6','7','8','9','10','11','12']
-print(df)
-X_col = df.drop('willwait', axis=1)
+for cols in dataset.columns:
+    feature_cols.append(cols)
+
+
+target_cols = []
+target_cols = feature_cols.pop()
+
+X_col = dataset.iloc[:,0:len(dataset)-2]
+df1 = pd.DataFrame(X_col)
+print(df1)
+
+y_col = dataset.iloc[:,-1]
+df2 = pd.DataFrame(y_col)
+print(df2)
+
 
 #split dataset in features and target variable
 feature_cols = ['alt', 'bar', 'fri', 'hun','pat','price','rain','res','type','est']
-X = X_col # Features
-y = df['willwait'] # Target variable
+X = df1 # Features
+y = df2 # Target variable
 
 le = preprocessing.LabelEncoder()
 X = X.apply(le.fit_transform)
+print(X)
 y = le.fit_transform(y)
 
 
@@ -51,6 +64,7 @@ print("Predicted output: ", le.inverse_transform(y_pred))
 #print("Accuracy:",metrics.accuracy_score([[1,0,1,1,0,0,1,0,3,0]], y_pred))
 
 plt.figure(figsize=(12,6))
+
 tree.plot_tree(clf, feature_names=feature_cols, class_names=['No','Willwait'], filled=True,rounded=True)
 
 plt.show()
