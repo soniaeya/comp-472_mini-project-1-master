@@ -1,16 +1,18 @@
 # Load libraries
 import pandas as pd
-from sklearn import tree # Import Decision Tree Classifier
-from sklearn import preprocessing #to turn strings into numbers
-from sklearn.model_selection import train_test_split # Import train_test_split function
-from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
+from sklearn import tree  # Import Decision Tree Classifier
+from sklearn import preprocessing  # to turn strings into numbers
+from sklearn.model_selection import train_test_split  # Import train_test_split function
+from sklearn import metrics  # Import scikit-learn metrics module for accuracy calculation
 import numpy as np
 
 import matplotlib.pyplot as plt
 
-from six import StringIO
-from IPython.display import Image
-import pydotplus
+import warnings
+from sklearn.exceptions import DataConversionWarning
+
+warnings.filterwarnings("ignore", category=DataConversionWarning)
+
 
 # [[1,0,0,1,3,5,0,]]
 def main():
@@ -41,7 +43,8 @@ def main():
     print(X)
     y = le.fit_transform(y)
 
-    choice = input("Please choose an option [1, 2, 3]: \n1. Visualize the decision tree\n2. Specify Parameter\n3. Exit\n")
+    choice = input(
+        "Please choose an option [1, 2, 3]: \n1. Visualize the decision tree\n2. Specify Parameter\n3. Exit\n")
     while choice != str(3):
         # choice = input("Please choose an option [1, 2, 3]: \n1. Specify Parameter\n2. Visualize the decision tree\n3. "
         #                "Exit\n")
@@ -55,14 +58,14 @@ def main():
                 idx += 1
             user_input = [user_input]
 
-            #print("Printing X_test: \n", X_test)
-            #[[1,0,1,1,0,0,1,0,2,0]]
+            # print("Printing X_test: \n", X_test)
+            # [[1,0,1,1,0,0,1,0,2,0]]
             y_pred = clf.predict(user_input)
 
             print("Predicted output: ", le.inverse_transform(y_pred))
             # split dataset in features and target variable
-            choice = input(
-                "Please choose an option [1, 2, 3]: \n1. Specify Parameter\n2. Visualize the decision tree\n3. Exit\n")
+            choice = input("Please choose an option [1, 2, 3]: \n1. Visualize the decision tree\n2. Specify "
+                           "Parameter\n3. Exit\n")
             continue
 
 
@@ -86,12 +89,12 @@ def main():
             tree.plot_tree(clf, feature_names=feature_cols, class_names=['No', 'Willwait'], filled=True, rounded=True)
 
             plt.show()
-            choice = input(
-                "Please choose an option [1, 2, 3]: \n1. Specify Parameter\n2. Visualize the decision tree\n3. Exit\n")
+            print("The Decision Tree has been printed!")
+            print()
+            choice = input("Please choose an option [1, 2, 3]: \n1. Visualize the decision tree\n2. Specify "
+                           "Parameter\n3. Exit\n")
         elif choice == str(3):
             exit()
-
-
 
 
 main()
